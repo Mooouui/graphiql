@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_graphql_schema">
+    <sys_graphql_schema action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application_namespace>xSncGraphiql</application_namespace>
+        <enforce_acl/>
+        <name>GetIncident</name>
+        <namespace>getIncident</namespace>
+        <paths>HelloWorld:message,Incident:active,Incident:assignedTo,Incident:caller,Incident:description,Incident:id,Incident:number,Incident:priority,Incident:shortDescription,Incident:state,Query:getHelloWorld,Query:getIncident,Query:getIncidents,Query:getIncidentsForStudent,User:active,User:city,User:email,User:id,User:incidents,User:manager,User:name,User:phone,User:state</paths>
+        <requires_acl_authorization>false</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <schema>schema {&#13;
+	query: Query&#13;
+	mutation: Mutation&#13;
+}&#13;
+&#13;
+type Query {&#13;
+	#implement here...&#13;
+	getHelloWorld(name:String):HelloWorld!&#13;
+	getIncidentsForStudent(callerId: String!, last: Int): [Incident]&#13;
+	getIncidents(priority: String): [Incident]&#13;
+	getIncident(id: ID!): Incident!&#13;
+}&#13;
+&#13;
+type Incident {&#13;
+	id: String! @source(value: "sys_id.value")&#13;
+	number: String! @source(value: "number.value")&#13;
+	active: Boolean! @source(value: "active.display_value")&#13;
+	state: String! @source(value: "state.display_value")&#13;
+	shortDescription: String @source(value: "short_description.value")&#13;
+	description: String @source(value: "description.value")&#13;
+	priority: String @source(value: "priority.display_value")&#13;
+	assignedTo: User @source(value: "assigned_to.value")&#13;
+	caller: User @source(value: "caller_id.value")&#13;
+}&#13;
+&#13;
+type User {&#13;
+	id: String! @source(value: "sys_id.value")&#13;
+	active: String @source(value: "active.display_value")&#13;
+	name: String @source(value: "name.value")&#13;
+	email: String @source(value: "email.value")&#13;
+	phone: String @source(value: "mobile_phone.value")&#13;
+	manager: User @source(value : "manager.value")&#13;
+	city: String @source(value: "city.value")&#13;
+	state: String @source(value: "state.value")&#13;
+	incidents: [Incident]&#13;
+}&#13;
+&#13;
+type HelloWorld{&#13;
+	message: String!&#13;
+}&#13;
+&#13;
+type Mutation {&#13;
+	#implement here...&#13;
+}&#13;
+</schema>
+        <sys_class_name>sys_graphql_schema</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-03-26 07:03:23</sys_created_on>
+        <sys_id>b56ceeef47c10210ff2ef5e3416d43c4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>GetIncident</sys_name>
+        <sys_package display_value="GraphiQL" source="x_snc_graphiql">407d86c347eed110552caf52736d4301</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="GraphiQL">407d86c347eed110552caf52736d4301</sys_scope>
+        <sys_update_name>sys_graphql_schema_b56ceeef47c10210ff2ef5e3416d43c4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-03-26 07:03:23</sys_updated_on>
+        <type_names/>
+    </sys_graphql_schema>
+</record_update>
